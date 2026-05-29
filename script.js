@@ -32,14 +32,18 @@ function showPhoto(index) {
     currentPhotoIndex = index;
     const photoElement = document.getElementById('current-photo');
     const captionElement = document.getElementById('photo-caption');
-    
-    photoElement.style.opacity = 0;
-    setTimeout(() => {
+
+    // 预加载图片
+    const img = new Image();
+    img.onload = function() {
         photoElement.src = photos[index].url;
-        captionElement.innerText = photos[index].caption;
         photoElement.style.opacity = 1;
-    }, 300);
-    
+    };
+    img.src = photos[index].url;
+
+    // 立即更新文字
+    captionElement.innerText = photos[index].caption;
+
     // 更新指示器
     document.querySelectorAll('.indicator').forEach((ind, i) => {
         ind.classList.toggle('active', i === index);
