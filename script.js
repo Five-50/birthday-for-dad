@@ -33,15 +33,8 @@ function showPhoto(index) {
     const photoElement = document.getElementById('current-photo');
     const captionElement = document.getElementById('photo-caption');
 
-    // 预加载图片
-    const img = new Image();
-    img.onload = function() {
-        photoElement.src = photos[index].url;
-        photoElement.style.opacity = 1;
-    };
-    img.src = photos[index].url;
-
-    // 立即更新文字
+    // 直接更新图片和文字
+    photoElement.src = photos[index].url;
     captionElement.innerText = photos[index].caption;
 
     // 更新指示器
