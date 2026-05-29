@@ -60,8 +60,13 @@ function goToPhoto(index) {
     showPhoto(index);
 }
 
-// 自动轮播
-setInterval(nextPhoto, 5000);
+// 自动轮播函数
+let slideInterval = null;
+
+function startSlideShow() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(nextPhoto, 5000);
+}
 
 // 祝福墙功能
 function addWish() {
@@ -303,6 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     setActiveNav();
     addClickEffects();
+    
+    // 初始化第一张照片并开始轮播
+    showPhoto(0);
+    startSlideShow();
     
     // 添加键盘事件
     document.addEventListener('keydown', (e) => {
