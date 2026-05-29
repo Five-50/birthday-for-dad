@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爸爸生日快乐！</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">首页</a>
+            <a href="#photos" class="nav-link">照片回忆</a>
+            <a href="#achievements" class="nav-link">运动成就</a>
+            <a href="#wishes" class="nav-link">祝福墙</a>
+            <a href="#game" class="nav-link">趣味游戏</a>
+        </div>
+    </nav>
+
+    <!-- 首页 -->
+    <section id="home" class="section home-section">
+        <div class="home-content">
+            <div class="birthday-cake">
+                <div class="cake">
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="cake-top"></div>
+                    <div class="cake-middle"></div>
+                    <div class="cake-bottom"></div>
+                </div>
+            </div>
+            <div class="late-banner">
+                <span class="late-emoji">😜</span>
+                <span>迟到的祝福更真诚！</span>
+                <span class="late-emoji">🎂</span>
+            </div>
+            <h1 class="main-title">爸爸，生日快乐！</h1>
+            <p class="subtitle">愿您身体健康 · 少些劳累 · 多赚钞票</p>
+            <button class="surprise-btn" onclick="showConfetti()">🎉 点击送祝福</button>
+        </div>
+    </section>
+
+    <!-- 照片回忆 -->
+    <section id="photos" class="section photos-section">
+        <h2 class="section-title">📷 美好回忆</h2>
+        <div class="photo-carousel">
+            <button class="carousel-btn prev-btn" onclick="prevPhoto()">&#10094;</button>
+            <div class="carousel-container">
+                <div class="photo-wrapper">
+                    <img id="current-photo" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=happy%20father%20and%20son%20playing%20sports%20together%20outdoor%20sunny%20day&image_size=landscape_16_9" alt="回忆照片">
+                    <div class="photo-caption" id="photo-caption">父子运动时光</div>
+                </div>
+            </div>
+            <button class="carousel-btn next-btn" onclick="nextPhoto()">&#10095;</button>
+        </div>
+        <div class="photo-indicators">
+            <span class="indicator active" onclick="goToPhoto(0)"></span>
+            <span class="indicator" onclick="goToPhoto(1)"></span>
+            <span class="indicator" onclick="goToPhoto(2)"></span>
+            <span class="indicator" onclick="goToPhoto(3)"></span>
+            <span class="indicator" onclick="goToPhoto(4)"></span>
+        </div>
+    </section>
+
+    <!-- 运动成就 -->
+    <section id="achievements" class="section achievements-section">
+        <h2 class="section-title">🏆 运动成就</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card" data-year="2020">
+                <div class="achievement-icon">🏀</div>
+                <h3>篮球达人</h3>
+                <p>球场上的 MVP，永远的热爱</p>
+                <div class="year-badge">2020</div>
+            </div>
+            <div class="achievement-card" data-year="2021">
+                <div class="achievement-icon">🏓</div>
+                <h3>乒乓高手</h3>
+                <p>小球转动大快乐</p>
+                <div class="year-badge">2021</div>
+            </div>
+            <div class="achievement-card" data-year="2022">
+                <div class="achievement-icon">🏸</div>
+                <h3>羽毛球健将</h3>
+                <p>挥拍间尽显风采</p>
+                <div class="year-badge">2022</div>
+            </div>
+            <div class="achievement-card" data-year="2023">
+                <div class="achievement-icon">🎱</div>
+                <h3>台球能手</h3>
+                <p>精准走位，沉稳如你</p>
+                <div class="year-badge">2023</div>
+            </div>
+            <div class="achievement-card" data-year="2024">
+                <div class="achievement-icon">🏃</div>
+                <h3>跑步爱好者</h3>
+                <p>用脚步丈量生活的每一天</p>
+                <div class="year-badge">2024</div>
+            </div>
+            <div class="achievement-card" data-year="2025">
+                <div class="achievement-icon">❤️</div>
+                <h3>健康第一</h3>
+                <p>身体棒棒，全家幸福</p>
+                <div class="year-badge">2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 祝福墙 -->
+    <section id="wishes" class="section wishes-section">
+        <h2 class="section-title">💌 祝福墙</h2>
+        <div class="wish-input-container">
+            <input type="text" id="wish-input" placeholder="写下您的祝福...">
+            <button class="wish-btn" onclick="addWish()">发送祝福</button>
+        </div>
+        <div class="wishes-wall" id="wishes-wall">
+            <div class="wish-card">
+                <div class="wish-avatar">👨‍👦</div>
+                <div class="wish-content">
+                    <h4>儿子</h4>
+                    <p>爸爸！虽然生日过了，但祝福迟到爱不迟到！😜</p>
+                </div>
+                <div class="wish-time">刚刚</div>
+            </div>
+            <div class="wish-card">
+                <div class="wish-avatar">🎂</div>
+                <div class="wish-content">
+                    <h4>儿子</h4>
+                    <p>生日蛋糕补一个！祝爸爸新的一岁继续帅！</p>
+                </div>
+                <div class="wish-time">刚刚</div>
+            </div>
+            <div class="wish-card">
+                <div class="wish-avatar">💰</div>
+                <div class="wish-content">
+                    <h4>儿子</h4>
+                    <p>愿爸爸少劳累多赚钱，天天开心没烦恼！</p>
+                </div>
+                <div class="wish-time">刚刚</div>
+            </div>
+            <div class="wish-card">
+                <div class="wish-avatar">😎</div>
+                <div class="wish-content">
+                    <h4>儿子</h4>
+                    <p>假装今天是生日！干杯！🍻</p>
+                </div>
+                <div class="wish-time">刚刚</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 趣味游戏 -->
+    <section id="game" class="section game-section">
+        <h2 class="section-title">🎮 趣味运动挑战</h2>
+        <div class="game-container">
+            <div class="game-info">
+                <p>点击运动图标获得分数！30秒内看看能得多少分！</p>
+                <div class="game-stats">
+                    <span class="score">得分: <span id="score">0</span></span>
+                    <span class="time">时间: <span id="time">30</span>秒</span>
+                </div>
+            </div>
+            <div class="game-area" id="game-area">
+                <div class="start-screen" id="start-screen">
+                    <h3>准备好挑战了吗？</h3>
+                    <button class="start-btn" onclick="startGame()">开始游戏</button>
+                </div>
+                <div class="game-over-screen" id="game-over-screen" style="display: none;">
+                    <h3>游戏结束！</h3>
+                    <p>最终得分: <span id="final-score">0</span></p>
+                    <button class="start-btn" onclick="restartGame()">再玩一次</button>
+                </div>
+            </div>
+            <div class="game-instructions">
+                <p>🏃 跑步 +10分 | 🚴 骑行 +15分 | ⛹️ 篮球 +20分 | 🏊 游泳 +25分</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>❤️ 永远爱您的儿子 ❤️</p>
+        <p>祝您生日快乐，身体健康，财源广进，开心每一天！</p>
+    </footer>
+
+    <!-- 彩带效果 -->
+    <div id="confetti-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
